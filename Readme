@@ -1,0 +1,52 @@
+# ETH-AVAX-Module1
+The TokenModule2 contract is an ERC20 token contract with additional ownership functionalities inherited from the Ownable contract of OpenZeppelin. It allows the contract owner to mint tokens, burn tokens, and transfer tokens to other addresses.
+
+# Prerequisites
+Solidity ^0.8.0
+
+#Functions
+Constructor
+Initializes the ERC20 token with the specified _nameOfToken and _symbolOfToken.
+Inherits ownership functionalities from Ownable, setting the deployer (msg.sender) as the initial owner.
+
+mintTokenByOwner
+Allows the contract owner to mint _amountToMint tokens to _addrToMint.
+Restricted to the contract owner (onlyOwner modifier).
+
+burnTokens
+Allows any address to burn _amountToBurn tokens from _addrToBurn.
+
+transfer
+Transfer amount from the users address to the receivers address
+
+# code 
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract TokenModule2 is ERC20, Ownable {
+    constructor(string memory _nameOfToken, string memory _symbolOfToken) 
+    ERC20(_nameOfToken, _symbolOfToken) 
+    Ownable(msg.sender) {}
+    
+    function mintTokenByOwner(address _addrToMint, uint256 _amountToMint) public onlyOwner {
+        _mint(_addrToMint, _amountToMint);
+    }
+
+    function burnTokens(address _addrToBurn,uint256 _amountToBurn) public {
+        _burn(_addrToBurn, _amountToBurn);
+    }
+
+    function transfer(address _receiver, uint256 _amountToTransfer) public override returns (bool) {
+        return super.transfer(_receiver,_amountToTransfer);
+    }
+}
+
+
+# License
+This contract is using the MIT License.
+
+# Author
+Nikita
