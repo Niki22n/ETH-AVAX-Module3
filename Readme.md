@@ -1,10 +1,14 @@
 # ETH-AVAX-Module1
+Types of Functions
+
+# Description
 The TokenModule2 contract is an ERC20 token contract with additional ownership functionalities inherited from the Ownable contract of OpenZeppelin. It allows the contract owner to mint tokens, burn tokens, and transfer tokens to other addresses.
 
 # Prerequisites
 Solidity ^0.8.0
 
-#Functions
+# Getting Started
+# Functions
 Constructor
 Initializes the ERC20 token with the specified _nameOfToken and _symbolOfToken.
 Inherits ownership functionalities from Ownable, setting the deployer (msg.sender) as the initial owner.
@@ -20,6 +24,7 @@ transfer
 Transfer amount from the users address to the receivers address
 
 # code 
+```
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -43,13 +48,10 @@ contract TokenModule2 is ERC20, Ownable {
         return super.transfer(_receiver,_amountToTransfer);
     }
 }
+```
 
-
-# License
-This contract is using the MIT License.
-
-# Author
+# Authors
 Nikita
 
-# Video Walkthrough
-https://www.loom.com/share/d74247bd3e05458ca1bc78f90732806f?sid=134428ee-5370-44ab-8a25-dbfc00152e81
+# License
+This project is licensed under the MIT License 
